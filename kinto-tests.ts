@@ -68,3 +68,11 @@ articles.loadDump([
 
 articles.clear()
   .then(console.log.bind(console));
+
+articles.sync()
+  .then(console.log.bind(console))
+  .catch(err => {
+    if (err.response && err.response.status === 401) {
+      console.error('HTTP status code indicates auth problem');
+    }
+  });
